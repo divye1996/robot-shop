@@ -1,22 +1,21 @@
 pipeline {
-  agent none
-
+  environment {
+    registry = "divye1996/robot-shop"
+    registryCredential = ‘dockerhub’
+  }
+  agent any
   stages {
-    
-    stage('Build') {
-      
+    stage('Cloning Git') {
       steps {
-        echo "Building robot-shop"
+        git 'https://github.com/divye1996/robot-shop.git'
       }
     }
-    
-    stage('Test') {
-      
-      steps {
-        echo "Testing robot-shop"
-        echo "Testing for web-hook"
+    stage('Building image') {
+      steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
       }
     }
-    
   }
 }
