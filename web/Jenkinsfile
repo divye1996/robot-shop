@@ -1,0 +1,21 @@
+pipeline {
+  agent none
+
+  stages {
+    
+    stage('Build') {
+      
+      steps {
+        echo "Building robot-shop"
+      }
+    }
+    
+    stage('Test') {
+      
+      stepss {
+        echo "Testing robot-shop"
+      }
+    }
+    
+  }
+}
