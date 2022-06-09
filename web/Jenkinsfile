@@ -1,6 +1,6 @@
 pipeline{
 
-	agent none
+	agent {label 'linux'}
 
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
@@ -20,6 +20,7 @@ pipeline{
 			steps {
 				sh '''
         docker build --network=host -t divye1996/robot-shop:latest -f web/Dockerfile .
+        '''
 			}
 		}
 
